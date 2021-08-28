@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% include 'testapp/base.html' %}
+{% load static %}
+{% block content %}
+{% for app in crypto_list %}
+{% if app.logo %}
+<a href="{{app.get_absolute_url}}" style="text-decoration: none;color:black;">
+<div class="container-fluid">
+    <div class="row" style="float:left;">
+      <div class="col-lg-2 col-md-4 col-sm-6 list">
+        <div class="box" style="border:1px solid black;width:330px;height:450px;margin:10px 0px 0px 5px;padding:4px;border-radius: 13px;">
+        <img src="{{app.logo.url}}" alt="nokia" width="130px" height="auto" style="margin-left:95px;border-radius:10px;"><br><br>
+        <h2 style="margin-left: 18px;">{{app.appname}}</h2>
+        <ul style="margin-left:10px;list-style-type:none;width:280px;padding-left:8px;height:150px;" class="box">
+          <li><p style="display:inline;width: 300px;">{{app.description}}</p></li><br>
+          <li style="width:250px;"><a href="{{app.andriod_link}}" style="text-decoration: none;">Click to Download(andriod)</a></li>
+          <li><p style="width:250px;margin:0px;">Andriod Rating:{{app.andriod_rate}}/5</p></li>
+          <li style="width:250px;"><a href="{{app.ios_link}}" style="text-decoration: none;">Click to Download(ios)</a></li>
+          <p style="width:250px;margin:0px;">IOS rating :{{app.ios_rate}}/5</p>
+        </ul>
+      </div>
+      </div>
+    </div>
+    </div>
+  </a>
+{% endif %}
+{% endfor %}
+{% endblock %}
